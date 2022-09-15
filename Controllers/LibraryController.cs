@@ -1,16 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
+using LibraryAPI.Model;
 
 namespace LibraryAPI.Controllers;
 
 [Route("api/[Controller]")]
 [ApiController]
-public class LibraryController : Controller
+public class BooksController : Controller
 {
-    public static List<LibraryAPI> books = new List<LibraryAPI>
+    public static List<Book> books = new List<Book>
     {
-        new LibraryAPI {
+        new Book {
                 Id = 1,
-                Title = "SQL for dummies",
+                Published = DateTime.Now,
+                Title = "SQL",
                 Isbn = 184827283,
                 Subject = "Backend",
                 Author = "Sander Jevnaker",
@@ -21,31 +23,40 @@ public class LibraryController : Controller
         };
 
     [HttpGet] 
-    public async Task<ActionResult<List<LibraryAPI>>> Get()
+    public async Task<ActionResult<List<Book>>> Get()
         {
             return Ok(books);
         }
         
     [HttpGet("{id}")]
-    public async Task<ActionResult<LibraryAPI>> Get(int id)
+    public async Task<ActionResult<Book>> Get(int id)
     {
-        var book = books.Find(h => h.Id == id);
+        var book = books.Find(b => b.Id == id);
+        if (book == null)
+            return BadRequest("Book not found");
+        return Ok(book);
+    }
+    
+    [HttpGet("/bookTitle/{title}")]
+    public async Task<ActionResult<Book>> Get(string title)
+    {
+        var book = books.Find(b => b.Title == title);
         if (book == null)
             return BadRequest("Book not found");
         return Ok(book);
     }
     
     [HttpPost]
-    public async Task<ActionResult<List<LibraryAPI>>> DddBook(LibraryAPI libraryApi) 
+    public async Task<ActionResult<List<Book>>> DddBook(Book libraryApi) 
     {
         books.Add(libraryApi);
         return Ok(books);
     }
     
     [HttpPut]
-    public async Task<ActionResult<List<LibraryAPI>>> UpdateBook(LibraryAPI request)
+    public async Task<ActionResult<List<Book>>> UpdateBook(Book request)
     {
-        var book = books.Find(h => h.Id == request.Id);
+        var book = books.Find(b => b.Id == request.Id);
         if (book == null)
             return BadRequest("Book not found");
         
@@ -63,9 +74,9 @@ public class LibraryController : Controller
     }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult<List<LibraryAPI>>> DeleteBook(int id)
+    public async Task<ActionResult<List<Book>>> DeleteBook(int id)
     {
-        var book = books.Find(h => h.Id == id);
+        var book = books.Find(b => b.Id == id);
         if (book == null)
             return BadRequest("Book not found");
 

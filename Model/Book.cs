@@ -1,10 +1,12 @@
 using System.Reflection.Metadata.Ecma335;
 
-namespace LibraryAPI;
+namespace LibraryAPI.Model;
 
-public class LibraryAPI
+public class Book
 {
     public int Id { get; set; }
+
+    public DateTime Published { get; set; }
     
     public string Title { get; set; }
     
