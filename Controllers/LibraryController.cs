@@ -12,7 +12,7 @@ public class BooksController : Controller
         new Book {
                 Id = 1,
                 Published = DateTime.Now,
-                Title = "SQL",
+                Title = "Daniel Gustav for dummies",
                 Isbn = 184827283,
                 Subject = "Backend",
                 Author = "Sander Jevnaker",
@@ -23,13 +23,13 @@ public class BooksController : Controller
         };
 
     [HttpGet] 
-    public async Task<ActionResult<List<Book>>> Get()
+    public async Task<ActionResult<List<Book>>> GetBooks()
         {
             return Ok(books);
         }
         
     [HttpGet("{id}")]
-    public async Task<ActionResult<Book>> Get(int id)
+    public async Task<ActionResult<Book>> GetId(int id)
     {
         var book = books.Find(b => b.Id == id);
         if (book == null)
@@ -37,8 +37,8 @@ public class BooksController : Controller
         return Ok(book);
     }
     
-    [HttpGet("/bookTitle/{title}")]
-    public async Task<ActionResult<Book>> Get(string title)
+    [HttpGet("/title/{title}")]
+    public async Task<ActionResult<Book>> GetTitle(string title)
     {
         var book = books.Find(b => b.Title == title);
         if (book == null)
@@ -46,8 +46,27 @@ public class BooksController : Controller
         return Ok(book);
     }
     
+    
+    [HttpGet("/isbn/{isbn}")]
+    public async Task<ActionResult<Book>> GetIsbn(long isbn)
+    {
+        var book = books.Find(b => b.Isbn == isbn);
+        if (book == null)
+            return BadRequest("Book not found");
+        return Ok(book);
+    }
+    
+    [HttpGet("/author/{author}")]
+    public async Task<ActionResult<Book>> GetAuthor(string author)
+    {
+        var book = books.Find(b => b.Author == author);
+        if (book == null)
+            return BadRequest("Book not found");
+        return Ok(book);
+    }
+    
     [HttpPost]
-    public async Task<ActionResult<List<Book>>> DddBook(Book libraryApi) 
+    public async Task<ActionResult<List<Book>>> AddBook(Book libraryApi) 
     {
         books.Add(libraryApi);
         return Ok(books);
