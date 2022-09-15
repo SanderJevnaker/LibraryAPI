@@ -62,6 +62,7 @@ public class LibraryController : Controller
 
     }
 
+    [HttpDelete("{id}")]
     public async Task<ActionResult<List<LibraryAPI>>> DeleteBook(int id)
     {
         var book = books.Find(h => h.Id == id);
