@@ -36,14 +36,14 @@ public class LibraryController : Controller
     }
     
     [HttpPost]
-    public async Task<ActionResult<List<LibraryAPI>>> addBook(LibraryAPI libraryApi) 
+    public async Task<ActionResult<List<LibraryAPI>>> DddBook(LibraryAPI libraryApi) 
     {
         books.Add(libraryApi);
         return Ok(books);
     }
     
     [HttpPut]
-    public async Task<ActionResult<List<LibraryAPI>>> updateBook(LibraryAPI request)
+    public async Task<ActionResult<List<LibraryAPI>>> UpdateBook(LibraryAPI request)
     {
         var book = books.Find(h => h.Id == request.Id);
         if (book == null)
@@ -60,6 +60,16 @@ public class LibraryController : Controller
 
         return Ok(books);
 
+    }
+
+    public async Task<ActionResult<List<LibraryAPI>>> DeleteBook(int id)
+    {
+        var book = books.Find(h => h.Id == id);
+        if (book == null)
+            return BadRequest("Book not found");
+
+        books.Remove(book);
+        return Ok(books);
     }
 
     }
