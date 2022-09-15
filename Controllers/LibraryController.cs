@@ -6,13 +6,9 @@ namespace LibraryAPI.Controllers;
 [ApiController]
 public class LibraryController : Controller
 {
-    [HttpGet]
-    public async Task<IActionResult> Get()
+    public static List<LibraryAPI> books = new List<LibraryAPI>
     {
-        //Test
-        var test = new List<LibraryAPI>
-        {
-            new LibraryAPI {
+        new LibraryAPI {
                 Id = 1,
                 Title = "SQL for dummies",
                 Isbn = 184827283,
@@ -23,7 +19,19 @@ public class LibraryController : Controller
                 Language = "Norwegian"
             }
         };
-        return Ok(test);
+
+    [HttpGet] 
+    public async Task<ActionResult<List<LibraryAPI>>> Get()
+        {
+            return Ok(books);
+        }
+    
+    [HttpPost]
+    public async Task<ActionResult<List<LibraryAPI>>> addBook(LibraryAPI libraryApi) 
+    {
+        books.Add(libraryApi);
+        return Ok(books);
+    }
 
     }
-}
+    
