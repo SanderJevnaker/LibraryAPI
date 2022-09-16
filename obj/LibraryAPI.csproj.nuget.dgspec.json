@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sander\\RiderProjects\\Library\\LibraryAPI.csproj": {}
+    "/Users/sanderjevnaker/Desktop/LibraryAPI/LibraryAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sander\\RiderProjects\\Library\\LibraryAPI.csproj": {
+    "/Users/sanderjevnaker/Desktop/LibraryAPI/LibraryAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sander\\RiderProjects\\Library\\LibraryAPI.csproj",
+        "projectUniqueName": "/Users/sanderjevnaker/Desktop/LibraryAPI/LibraryAPI.csproj",
         "projectName": "LibraryAPI",
-        "projectPath": "C:\\Users\\Sander\\RiderProjects\\Library\\LibraryAPI.csproj",
-        "packagesPath": "C:\\Users\\Sander\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sander\\RiderProjects\\Library\\obj\\",
+        "projectPath": "/Users/sanderjevnaker/Desktop/LibraryAPI/LibraryAPI.csproj",
+        "packagesPath": "/Users/sanderjevnaker/.nuget/packages/",
+        "outputPath": "/Users/sanderjevnaker/Desktop/LibraryAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Sander\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/sanderjevnaker/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,9 +38,33 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0-rc.1.22426.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0-rc.1.22426.7, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.1.13, )"
+            },
+            "NuGet.CommandLine": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.2.1, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[6.0.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -68,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
         }
       }
     }

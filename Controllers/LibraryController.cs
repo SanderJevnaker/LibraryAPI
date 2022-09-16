@@ -22,11 +22,18 @@ public class BooksController : Controller
             }
         };
 
+    private readonly DataContext _context;
+    public BooksController(DataContext context)
+    {
+        _context = context;
+        
+    }
+
     [HttpGet] 
     public async Task<ActionResult<List<Book>>> GetBooks()
-        {
-            return Ok(books);
-        }
+    {
+        return Ok(books);
+    }
         
     [HttpGet("{id}")]
     public async Task<ActionResult<Book>> GetId(int id)
@@ -41,6 +48,15 @@ public class BooksController : Controller
     public async Task<ActionResult<Book>> GetTitle(string title)
     {
         var book = books.Find(b => b.Title == title);
+        if (book == null)
+            return BadRequest("Book not found");
+        return Ok(book);
+    }
+    
+    [HttpGet("/subject/{subject}")]
+    public async Task<ActionResult<Book>> GetSubject(string subject)
+    {
+        var book = books.Find(b => b.Subject == subject);
         if (book == null)
             return BadRequest("Book not found");
         return Ok(book);
@@ -104,4 +120,5 @@ public class BooksController : Controller
     }
 
     }
+    
     
