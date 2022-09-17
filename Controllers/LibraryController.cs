@@ -9,18 +9,7 @@ public class BooksController : Controller
 {
     public static List<Book> books = new List<Book>
     {
-        new Book {
-                Id = 1,
-                Published = DateTime.Now,
-                Title = "Daniel Gustav for dummies",
-                Isbn = 184827283,
-                Subject = "Backend",
-                Author = "Sander Jevnaker",
-                Version = "v2",
-                Shelf = "A32",
-                Language = "Norwegian"
-            }
-        };
+    };
 
     private readonly DataContext _context;
     public BooksController(DataContext context)
@@ -32,13 +21,13 @@ public class BooksController : Controller
     [HttpGet] 
     public async Task<ActionResult<List<Book>>> GetBooks()
     {
-        return Ok(books);
+        return Ok(await _context.Books.ToListAsync());
     }
         
     [HttpGet("{id}")]
     public async Task<ActionResult<Book>> GetId(int id)
     {
-        var book = books.Find(b => b.Id == id);
+        var book = await _context.Books.FindAsync(id);
         if (book == null)
             return BadRequest("Book not found");
         return Ok(book);
@@ -82,41 +71,45 @@ public class BooksController : Controller
     }
     
     [HttpPost]
-    public async Task<ActionResult<List<Book>>> AddBook(Book libraryApi) 
+    public async Task<ActionResult<List<Book>>> AddBook(Book book)
     {
-        books.Add(libraryApi);
-        return Ok(books);
+        _context.Books.Add(book);
+        await _context.SaveChangesAsync();
+        return Ok(await _context.Books.ToListAsync());
     }
     
     [HttpPut]
     public async Task<ActionResult<List<Book>>> UpdateBook(Book request)
     {
-        var book = books.Find(b => b.Id == request.Id);
-        if (book == null)
+        var dbBook = await _context.Books.FindAsync(request.Id);
+        if (dbBook == null)
             return BadRequest("Book not found");
         
-        book.Id = request.Id;
-        book.Title = request.Title;
-        book.Isbn = request.Isbn;
-        book.Subject = request.Subject;
-        book.Author = request.Author;
-        book.Version = request.Version;
-        book.Shelf = request.Shelf;
-        book.Language = request.Language;
+        dbBook.Id = request.Id;
+        dbBook.Title = request.Title;
+        dbBook.Isbn = request.Isbn;
+        dbBook.Subject = request.Subject;
+        dbBook.Author = request.Author;
+        dbBook.Version = request.Version;
+        dbBook.Shelf = request.Shelf;
+        dbBook.Language = request.Language;
 
-        return Ok(books);
+        await _context.SaveChangesAsync();
+
+        return Ok(await _context.Books.ToListAsync());
 
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult<List<Book>>> DeleteBook(int id)
     {
-        var book = books.Find(b => b.Id == id);
+        var book = await _context.Books.FindAsync(id);
         if (book == null)
             return BadRequest("Book not found");
 
-        books.Remove(book);
-        return Ok(books);
+        _context.Books.Remove(book);
+        await _context.SaveChangesAsync();
+        return Ok(await _context.Books.ToListAsync());
     }
 
     }

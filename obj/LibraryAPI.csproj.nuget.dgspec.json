@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/sanderjevnaker/Desktop/LibraryAPI/LibraryAPI.csproj": {}
+    "C:\\Users\\Sander\\RiderProjects\\Library\\LibraryAPI.csproj": {}
   },
   "projects": {
-    "/Users/sanderjevnaker/Desktop/LibraryAPI/LibraryAPI.csproj": {
+    "C:\\Users\\Sander\\RiderProjects\\Library\\LibraryAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sanderjevnaker/Desktop/LibraryAPI/LibraryAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Sander\\RiderProjects\\Library\\LibraryAPI.csproj",
         "projectName": "LibraryAPI",
-        "projectPath": "/Users/sanderjevnaker/Desktop/LibraryAPI/LibraryAPI.csproj",
-        "packagesPath": "/Users/sanderjevnaker/.nuget/packages/",
-        "outputPath": "/Users/sanderjevnaker/Desktop/LibraryAPI/obj/",
+        "projectPath": "C:\\Users\\Sander\\RiderProjects\\Library\\LibraryAPI.csproj",
+        "packagesPath": "C:\\Users\\Sander\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sander\\RiderProjects\\Library\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/sanderjevnaker/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Sander\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -47,6 +49,24 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.0-rc.1.22426.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0-rc.1.22426.7, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.30, )"
+            },
+            "MySql.Data.EntityFramework": {
+              "target": "Package",
+              "version": "[8.0.30, )"
+            },
+            "MySql.Data.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.22, )"
             },
             "MySql.EntityFrameworkCore": {
               "target": "Package",
@@ -90,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

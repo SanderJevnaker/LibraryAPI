@@ -12,6 +12,13 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0-rc.1.22426.7">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="MySql.Data" Version="8.0.30" />
+        <PackageReference Include="MySql.Data.EntityFramework" Version="8.0.30" />
+        <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
         <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.4" />
         <PackageReference Include="MySqlConnector" Version="2.1.13" />
         <PackageReference Include="NuGet.CommandLine" Version="6.2.1">
@@ -25,6 +32,20 @@
     <ItemGroup>
       <Compile Remove="WeatherForecast.cs" />
       <Compile Remove="Controllers\WeatherForecastController.cs" />
+      <Compile Remove="Migrations\**" />
+      <Compile Remove="GlobalUsing.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Migrations\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Migrations\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Migrations\**" />
     </ItemGroup>
 
 </Project>
